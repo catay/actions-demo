@@ -6,4 +6,3 @@ jobs:
     steps:
       - run: echo "Hello world!"
       - run: echo "event: ${{ github.event_name }}"
-
