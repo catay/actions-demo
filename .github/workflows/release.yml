@@ -1,0 +1,8 @@
+name: My release
+on: [push]
+jobs:
+  release-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "ref: ${{ github.ref }}"'
+      - run: 'echo "event: ${{ github.event_name }}"'
