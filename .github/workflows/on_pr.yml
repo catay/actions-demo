@@ -1,0 +1,11 @@
+on:
+  pull_request:
+    types: 
+    - opened
+
+jobs:
+  test-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "this is a pull request !"
+
