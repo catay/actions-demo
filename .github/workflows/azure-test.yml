@@ -1,0 +1,37 @@
+
+on:
+  workflow_dispatch:
+    inputs:
+      #Mandatory inputs
+      ENVIRONMENT_NAME:
+        description: environment
+        type: string
+        required: true
+      RUNNER_NAME:
+        description: runner_name
+        type: string
+        default: ubuntu-latest
+
+permissions:
+  id-token: write
+  contents: read
+        
+jobs: 
+  deploy-infra:
+    name: Deploy Infra
+    runs-on: ${{ inputs.RUNNER_NAME }}
+    environment: ${{ inputs.ENVIRONMENT_NAME }}
+    steps:
+      - name: Log into Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} 
+
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0
+          inlineScript: |
+            az group show -n rg-new-8 --query "location"
