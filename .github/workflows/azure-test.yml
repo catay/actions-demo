@@ -1,12 +1,14 @@
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       #Mandatory inputs
       ENVIRONMENT_NAME:
+        description: environment
         type: string
         required: true
       RUNNER_NAME:
+        description: runner_name
         type: string
         default: ubuntu-latest
 
