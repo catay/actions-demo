@@ -15,7 +15,9 @@ on:
         description: azure cli version
         type: string
         default: 2.30.0
-  push: --
+  push:
+    branches:
+      - prtest
 
 permissions:
   id-token: write
