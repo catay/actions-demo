@@ -1,0 +1,31 @@
+
+on:
+  workflow_dispatch:
+    inputs:
+      #Mandatory inputs
+      ENVIRONMENT_NAME:
+        description: environment
+        type: string
+        required: true
+      RUNNER_NAME:
+        description: runner_name
+        type: string
+        default: ubuntu-latest
+      AZCLI_VERSION:
+        description: azure cli version
+        type: string
+        default: 2.30.0
+#  push:
+#    branches:
+#      - prtest
+
+permissions:
+  id-token: write
+  contents: read
+        
+jobs: 
+  deploy-infra:
+    name: Deploy Infra
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "bla"
