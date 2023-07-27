@@ -1,0 +1,11 @@
+name: My release
+on: push
+
+env:
+  MKDOCS_VERSION: 1.4.3
+
+jobs:
+  j1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "pip install mkdocs==${{ env.MKDOCS_VERSION }} bla"'
